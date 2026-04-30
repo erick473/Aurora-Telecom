@@ -79,24 +79,22 @@ function openChat() {
 
 export default function App() {
   return (
-    <div className="min-h-screen" style={{
-      backgroundColor: C.white, color: C.ink,
+    <div className="min-h-screen bg-white text-ink font-sans" style={{
       fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
     }}>
 
       {/* HEADER */}
-      <header className="sticky top-0 z-40" style={{ backgroundColor: C.white, borderBottom: `1px solid ${C.border}` }}>
-        <div className="max-w-[1120px] mx-auto px-8 h-[56px] flex items-center justify-between">
-          <span className="text-[15px] font-semibold tracking-tight" style={{ color: C.ink }}>Aurora Telecom</span>
-          <nav className="hidden md:flex items-center gap-10 text-[13px]">
+      <header className="sticky top-0 z-40 bg-white border-b border-[#E5E5E5]">
+        <div className="max-w-[1120px] mx-auto px-4 sm:px-6 md:px-8 h-[56px] flex items-center justify-between">
+          <span className="text-[15px] font-semibold tracking-tight text-ink">Aurora Telecom</span>
+          <nav className="hidden md:flex items-center gap-6 md:gap-10 text-[13px]">
             {[['#planes', 'Planes'], ['#internet', 'Internet'], ['#cobertura', 'Cobertura'], ['#faq', 'Preguntas'], ['#contacto', 'Contacto']].map(([href, label]) => (
-              <a key={href} href={href} className="transition-colors" style={{ color: C.muted }}
-                onMouseEnter={e => (e.currentTarget.style.color = C.ink)}
-                onMouseLeave={e => (e.currentTarget.style.color = C.muted)}>
+              <a key={href} href={href} className="transition-colors text-muted hover:text-ink">
                 {label}
               </a>
             ))}
           </nav>
+          {/* Mobile menu placeholder (future: add hamburger) */}
         </div>
       </header>
 
@@ -158,8 +156,8 @@ export default function App() {
 
 
       {/* PLANES MÓVILES */}
-      <section className="max-w-[1120px] mx-auto px-8 py-20" id="planes">
-        <div className="grid md:grid-cols-[200px_1fr] gap-16">
+      <section className="max-w-[1120px] mx-auto px-4 sm:px-6 md:px-8 py-10 md:py-20" id="planes">
+        <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-8 md:gap-16">
           <div className="pt-1">
             <h2 className="text-[20px] font-semibold leading-tight mb-3" style={{ color: C.brand }}>Planes móviles</h2>
             <p className="text-[13px] leading-relaxed" style={{ color: C.muted }}>
@@ -170,8 +168,8 @@ export default function App() {
             </p>
           </div>
           <div>
-            <div className="overflow-x-auto rounded-2xl overflow-hidden" style={{ border: `1px solid ${C.border}` }}>
-              <table className="w-full text-[13px] min-w-[600px]">
+            <div className="overflow-x-auto rounded-2xl overflow-hidden border" style={{ borderColor: C.border }}>
+              <table className="w-full text-[13px] min-w-[480px] sm:min-w-[600px]">
                 <thead>
                   <tr style={{ backgroundColor: C.brand }}>
                     {[
@@ -222,8 +220,8 @@ export default function App() {
 
 
       {/* INTERNET DE FIBRA */}
-      <section className="max-w-[1120px] mx-auto px-8 py-20" id="internet">
-        <div className="grid md:grid-cols-[200px_1fr] gap-16">
+      <section className="max-w-[1120px] mx-auto px-4 sm:px-6 md:px-8 py-10 md:py-20" id="internet">
+        <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-8 md:gap-16">
           <div className="pt-1">
             <h2 className="text-[20px] font-semibold leading-tight mb-3" style={{ color: C.brand }}>Internet de fibra</h2>
             <p className="text-[13px] leading-relaxed" style={{ color: C.muted }}>
@@ -237,8 +235,8 @@ export default function App() {
             </p>
           </div>
           <div>
-            <div className="overflow-x-auto rounded-2xl overflow-hidden" style={{ border: `1px solid ${C.border}` }}>
-              <table className="w-full text-[13px] min-w-[400px]">
+            <div className="overflow-x-auto rounded-2xl overflow-hidden border" style={{ borderColor: C.border }}>
+              <table className="w-full text-[13px] min-w-[320px] sm:min-w-[400px]">
                 <thead>
                   <tr style={{ backgroundColor: C.brand }}>
                     <th className="text-left py-3.5 px-4 text-[11px] uppercase tracking-[0.1em] font-semibold" style={{ color: '#FFFFFF' }}>Plan</th>
@@ -269,8 +267,8 @@ export default function App() {
       <div style={{ borderTop: `1px solid ${C.border}` }} />
 
       {/* COBERTURA DE FIBRA */}
-      <section className="max-w-[1120px] mx-auto px-8 py-20" id="cobertura" style={{ backgroundColor: C.white }}>
-        <div className="grid md:grid-cols-[200px_1fr] gap-16">
+      <section className="max-w-[1120px] mx-auto px-4 sm:px-6 md:px-8 py-10 md:py-20" id="cobertura" style={{ backgroundColor: C.white }}>
+        <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-8 md:gap-16">
           <div className="pt-1">
             <h2 className="text-[20px] font-semibold leading-tight mb-3" style={{ color: C.brand }}>Cobertura de fibra</h2>
             <p className="text-[13px] leading-relaxed" style={{ color: C.muted }}>
@@ -280,7 +278,7 @@ export default function App() {
               Verifica tu domicilio en auroratelecom.mx/cobertura o llama al 33-1234-5678.
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6">
             {coverage.map(c => (
               <div key={c.city}>
                 <p className="text-[13px] font-semibold mb-2" style={{ color: C.ink }}>{c.city}</p>
@@ -298,15 +296,15 @@ export default function App() {
       <div style={{ borderTop: `1px solid ${C.border}` }} />
 
       {/* FORMAS DE PAGO */}
-      <section className="max-w-[1120px] mx-auto px-8 py-20">
-        <div className="grid md:grid-cols-[200px_1fr] gap-16">
+      <section className="max-w-[1120px] mx-auto px-4 sm:px-6 md:px-8 py-10 md:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-8 md:gap-16">
           <div className="pt-1">
             <h2 className="text-[20px] font-semibold leading-tight mb-3" style={{ color: C.brand }}>Formas de pago</h2>
             <p className="text-[13px] leading-relaxed" style={{ color: C.muted }}>
               Facturación electrónica CFDI 4.0. Solicítala en auroratelecom.mx/facturacion dentro del mes en curso.
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 gap-x-12 gap-y-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
             {paymentMethods.map(m => (
               <div key={m} className="flex items-center gap-3 py-2" style={{ borderBottom: `1px solid ${C.border}` }}>
                 <span className="w-1 h-1 rounded-full flex-shrink-0" style={{ backgroundColor: C.brand }} />
@@ -320,8 +318,8 @@ export default function App() {
       <div style={{ borderTop: `1px solid ${C.border}` }} />
 
       {/* SOPORTE */}
-      <section className="max-w-[1120px] mx-auto px-8 py-20" style={{ backgroundColor: C.white }}>
-        <div className="grid md:grid-cols-[200px_1fr] gap-16">
+      <section className="max-w-[1120px] mx-auto px-4 sm:px-6 md:px-8 py-10 md:py-20" style={{ backgroundColor: C.white }}>
+        <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-8 md:gap-16">
           <div className="pt-1">
             <h2 className="text-[20px] font-semibold leading-tight mb-3" style={{ color: C.brand }}>Soporte técnico</h2>
             <p className="text-[13px] leading-relaxed" style={{ color: C.muted }}>
@@ -363,8 +361,8 @@ export default function App() {
       <div style={{ borderTop: `1px solid ${C.border}` }} />
 
       {/* FAQ */}
-      <section className="max-w-[1120px] mx-auto px-8 py-20" id="faq">
-        <div className="grid md:grid-cols-[200px_1fr] gap-16">
+      <section className="max-w-[1120px] mx-auto px-4 sm:px-6 md:px-8 py-10 md:py-20" id="faq">
+        <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-8 md:gap-16">
           <div className="pt-1">
             <h2 className="text-[20px] font-semibold leading-tight mb-3" style={{ color: C.brand }}>Preguntas frecuentes</h2>
           </div>
@@ -382,8 +380,8 @@ export default function App() {
       <div style={{ borderTop: `1px solid ${C.border}` }} />
 
       {/* FOOTER */}
-      <footer className="max-w-[1120px] mx-auto px-8 py-16" id="contacto">
-        <div className="grid md:grid-cols-3 gap-12 mb-12">
+      <footer className="max-w-[1120px] mx-auto px-4 sm:px-6 md:px-8 py-10 md:py-16" id="contacto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-8 md:mb-12">
           <div>
             <p className="text-[13px] font-semibold mb-4" style={{ color: C.ink }}>Aurora Telecom</p>
             <p className="text-[12px] leading-relaxed" style={{ color: C.muted }}>
@@ -412,8 +410,7 @@ export default function App() {
             </ul>
           </div>
         </div>
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4"
-          style={{ borderTop: `1px solid ${C.border}`, paddingTop: '24px' }}>
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-t pt-6" style={{ borderColor: C.border }}>
           <p className="text-[11px]" style={{ color: C.muted }}>
             © 2024 Aurora Telecom · Consulta nuestro aviso de privacidad en auroratelecom.mx/privacidad
           </p>
