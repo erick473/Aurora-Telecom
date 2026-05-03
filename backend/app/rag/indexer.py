@@ -1,24 +1,23 @@
-from sentence_transformers import SentenceTransformer
+from sklearn.feature_extraction.text import TfidfVectorizer
 from .loader import Chunk, load_knowledge_base
-import numpy as np
-
-# modelo multilingüe, entiende español, corre localmente sin costo
-_model = SentenceTransformer("paraphrase-multilingual-MiniLM-L12-v2")
 
 
 class RAGIndex:
     def __init__(self):
         self.chunks: list[Chunk] = []
-        self.embeddings: np.ndarray | None = None
+        self.vectorizer = TfidfVectorizer(
+            ngram_range=(1, 2),
+            min_df=1,
+            analyzer="word",
+            strip_accents="unicode"
+        )
+        self.matrix = None
 
     def build(self):
         self.chunks = load_knowledge_base()
         texts = [c.content for c in self.chunks]
-        self.embeddings = _model.encode(texts, show_progress_bar=True)
-        print(f"[RAG] Índice neuronal construido. Shape: {self.embeddings.shape}")
-
-    def embed_query(self, query: str) -> np.ndarray:
-        return _model.encode([query])[0]
+        self.matrix = self.vectorizer.fit_transform(texts)
+        print(f"[RAG] Índice TF-IDF construido. Shape: {self.matrix.shape}")
 
 
 rag_index = RAGIndex()
